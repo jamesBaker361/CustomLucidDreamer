@@ -25,7 +25,6 @@ warnings.filterwarnings(action='ignore')
 import pickle
 import imageio
 import numpy as np
-import open3d as o3d
 from PIL import Image
 from tqdm import tqdm
 from scipy.interpolate import griddata as interp_grid
@@ -71,7 +70,7 @@ class LucidDreamer:
         self.background = torch.tensor(bg_color, dtype=torch.float32, device='cuda')
         
         self.rgb_model = StableDiffusionInpaintPipeline.from_pretrained(
-            'runwayml/stable-diffusion-inpainting', revision='fp16', torch_dtype=torch.float16).to('cuda')
+            'stable-diffusion-v1-5/stable-diffusion-inpainting', revision='fp16', torch_dtype=torch.float16).to('cuda')
             # 'stablediffusion/SD1-5', revision='fp16', torch_dtype=torch.float16).to('cuda')
         self.d_model = torch.hub.load('./ZoeDepth', 'ZoeD_N', source='local', pretrained=True).to('cuda')
         self.controlnet = None
