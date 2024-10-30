@@ -64,4 +64,5 @@ if __name__ == "__main__":
 
     ld = LucidDreamer(for_gradio=False, save_dir=args.save_dir)
     ld.create(rgb_cond, txt_cond, neg_txt_cond, args.campath_gen, args.seed, args.diff_steps, model_name=args.model_name)
+    print("saviogn to ",ld.save_ply())
     ld.render_video(args.campath_render)
